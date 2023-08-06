@@ -1,0 +1,3 @@
+SELECT Name, Precio_de_lista__c, Capacidad__c, Marca__c, URL_Corto__c
+  FROM Tipo_de_Tanque__c
+  ORDER BY CreatedDate
