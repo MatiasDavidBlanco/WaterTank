@@ -1,10 +1,23 @@
+.container{
+    border-radius: 10px;
+    box-shadow: 1px 1px 13px 0px #c5bcbc;
+    background-color: #e5f0fbb5;
+}
 lightning-input{
-    width: 100%;
+    margin-left: 40px;
+    margin-right: 40px;
+    width: -webkit-fill-available;
 }
 lightning-button{
     padding: 10px;
 }
 
+/* lightning-card > article{
+    background-color: #a0c3ff57;
+    border: none;
+    padding: 10px;
+    box-shadow: 4px 4px 10px 0px #dcdbe3;
+} */
 .card{
     width: 370px;
     display: inline-block;
@@ -30,4 +43,11 @@ lightning-button{
     padding: 20px;
 }
 
+.img_container {
+    padding: 10px;
+}
+
+img{
+    border-radius: 10px;
+}
 

@@ -1,26 +1,38 @@
 <template >
-    <div class="slds-align_absolute-center">
-        <lightning-input type="text" label="Buscar Tipos de Tanque"></lightning-input>
-    </div>
-    <div class="slds-grid slds-wrap slds-grid_align-space" >
-        <template if:true={ListaTiposTanques.data}>
-            <template for:each={ListaTiposTanques.data} for:item="record">
-                <div key={record.Id}>
-                    <!-- <c-tipo-de-tanque-card 
-                        tipotanque={record}>
-                    </c-tipo-de-tanque-card> -->
-                    <lightning-card class="card slds-col slds-p-around_medium" title={record.Name} icon-name="custom:custom12">
-                            <div class="producto_body_info">
-                                <p><b>Marca:</b> {record.Marca__c} </p>
-                                <p><b>Capacidad:</b> {record.Capacidad__c} Litros </p>
-                                <p><b>Precio de Lista:</b> {record.Precio_de_lista__c} USD </p>
-                                <p><b>URL Corto:</b> {record.URL_Corto__c} <a href="https://sforce.co/2Wb4DOB">https://sforce.co/2Wb4DOB</a></p>
-                            </div>
-                            <!-- <img class="producto_img" src={TipoDeTanque.URL_Imagen__c} /> -->
-                            <lightning-button label="Ver Detalles" title="Detalles" onclick={navigateToRecordViewPage}></lightning-button>
-                    </lightning-card>
-                </div>
+    <div class="container">
+        <div class="slds-align_absolute-center">
+            <lightning-input type="text" placeholder="Buscar Tipos de Tanque"></lightning-input>
+        </div>
+        <div class="slds-grid slds-wrap slds-grid_align-space" >
+            <template if:true={ListaTiposTanques.data}>
+                <template for:each={ListaTiposTanques.data} for:item="record">
+                    <div  key={record.Id}>
+                        <!-- <c-tipo-de-tanque-card 
+                            tipotanque={record}>
+                        </c-tipo-de-tanque-card> -->
+                        <div class="tarjeta">
+                            <lightning-card class="card slds-col slds-p-around_medium" title={record.Name} icon-name="custom:custom12">
+                                    
+                                        <div class="producto_body_info">
+                                            <p><b>Marca:</b> {record.Marca__c} </p>
+                                            <p><b>Capacidad:</b> {record.Capacidad__c} Litros </p>
+                                            <p><b>Precio de Lista:</b> {record.Precio_de_lista__c} USD </p>
+                                            <p><b>URL Corto:</b> {record.URL_Corto__c} <a href="https://sforce.co/2Wb4DOB">https://sforce.co/2Wb4DOB</a></p>
+                                        </div>
+                                        <div class="img_container">
+                                            <img class="tanque_img" src={record.URL_Imagen__c} />
+                                        </div>
+                                        
+
+                                        
+                                        <!-- <img class="producto_img" src={TipoDeTanque.URL_Imagen__c} /> -->
+                                        <lightning-button label="Ver Detalles" title="Detalles" onclick={navigateToRecordViewPage} data-id={record.Id}></lightning-button>
+                                        <!-- <lightning-button label="Ver Detalles" title="Detalles" onload={handleButtonClick} data-id={record.Id}></lightning-button> -->
+                            </lightning-card>
+                        </div>
+                    </div>
+                </template>
             </template>
-        </template>
+        </div>
     </div>
 </template>
