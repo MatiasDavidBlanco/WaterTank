@@ -1,0 +1,10 @@
+<template>
+    <lightning-card title="Carga de csv ">
+        <div class="slds-box slds-m-around_medium">
+        <lightning-file-upload  accept={acceptedFormats}  
+            label="Ajuntar archivo CSV" 
+            onuploadfinished={uploadFileHandler}>
+        </lightning-file-upload>
+        </div>
+    </lightning-card>
+</template>
