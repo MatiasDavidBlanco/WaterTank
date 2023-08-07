@@ -9,8 +9,8 @@ public with sharing class testAssignTankOpp {
         Opportunity opp = new Opportunity (Name='Matias', StageName='Open', CloseDate = System.Today() + 14, Precio_Minimo__c = 3000, Precio_maximo__c = 5000, 
         Tipo_de_Tanque__c = tipoDeTanque.Id, Capacidad__c = 500);
         insert opp;
-        Opportunity opp2 = [SELECT Id, Tanque_Seleccionado__c FROM Opportunity WHERE Id =: opp.Id LIMIT 1];
-        System.assertEquals(tanque.Id, opp2.Tanque_Seleccionado__c);
+        Opportunity opp2 = [SELECT Id, Tanque_SeleccionadoLOOKUP__c FROM Opportunity WHERE Id =: opp.Id LIMIT 1];
+        System.assertEquals(tanque.Id, opp2.Tanque_SeleccionadoLOOKUP__c);
 
    }
 
@@ -23,8 +23,8 @@ public with sharing class testAssignTankOpp {
         Opportunity opp = new Opportunity (Name='Matias', StageName='Open', CloseDate = System.Today() + 14, Precio_Minimo__c = 3000, Precio_maximo__c = 5000, 
         Tipo_de_Tanque__c = tipoDeTanque.Id);
         insert opp;
-        Opportunity opp2 = [SELECT Id, Tanque_Seleccionado__c FROM Opportunity WHERE Id =: opp.Id LIMIT 1];
-        System.assertEquals(null, opp2.Tanque_Seleccionado__c);
+        Opportunity opp2 = [SELECT Id, Tanque_SeleccionadoLOOKUP__c FROM Opportunity WHERE Id =: opp.Id LIMIT 1];
+        System.assertEquals(null, opp2.Tanque_SeleccionadoLOOKUP__c);
 
    }
 }

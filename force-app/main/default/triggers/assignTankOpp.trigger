@@ -16,8 +16,7 @@ trigger assignTankOpp on Opportunity (before insert) {
     System.debug('Tanque' + tanks);
     
     if(tanks.size()>0){
-        // opp.Tanque_SeleccionadoLOOKUP__c = tanks[0].Id;
-        opp.Tanque_Seleccionado__c = tanks[0].Id;
+        opp.Tanque_SeleccionadoLOOKUP__c = tanks[0].Id;
         tanks[0].Estado__c = 'Reservado';
         update tanks;
     }else{
