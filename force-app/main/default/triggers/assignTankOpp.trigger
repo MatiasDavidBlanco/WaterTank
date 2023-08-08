@@ -1,7 +1,8 @@
 trigger assignTankOpp on Opportunity (before insert) {
 
+    //Guardo en una variable el regitro que disparó el trigger
     Opportunity opp = Trigger.New[0];
-
+    //Query para traer tanques industriales bajo ciertas condiciones
     List<Tanque_Industrial__c> tanks = new List<Tanque_Industrial__c>();
     tanks= [
         SELECT Id 
@@ -15,6 +16,9 @@ trigger assignTankOpp on Opportunity (before insert) {
 
     System.debug('Tanque' + tanks);
     
+    //Comprobación para evaluar:
+        // Si trajo un tanque, realizar asignaciones en campos de opp
+        // Si NO trajo un tanque, realizar creación de un nuevo pedido 
     if(tanks.size()>0){
         opp.Tanque_SeleccionadoLOOKUP__c = tanks[0].Id;
         tanks[0].Estado__c = 'Reservado';
