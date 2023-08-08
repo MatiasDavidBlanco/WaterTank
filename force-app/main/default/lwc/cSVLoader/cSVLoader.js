@@ -1,4 +1,3 @@
-
 import { LightningElement,track } from 'lwc';
 import cSVLoaderDatos from '@salesforce/apex/cSVLoaderService.cSVLoaderDatos';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
@@ -31,7 +30,7 @@ export default class CSVLoader extends LightningElement {
           const event = new ShowToastEvent({
           title: 'Success',
           message:
-            this.recordCount+' Tanques Industriales insertados con éxito.',
+            this.recordCount+' Tanques Industriales records inserted Successfully.',
            variant:'success',
            mode:'dismissible'
            });

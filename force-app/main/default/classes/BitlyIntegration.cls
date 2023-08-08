@@ -1,3 +1,4 @@
+
 public class BitlyIntegration{
     
     public static void generateBitly(List<Tipo_de_Tanque__c > lstT){
@@ -8,7 +9,7 @@ public class BitlyIntegration{
     
     @future(callout=true)
     public static void createBitly(List<Id> lstTId){
-        List<Tipo_de_Tanque__c> lstT = [Select id FROM Tipo_de_Tanque__c WHERE id =: lstTId[0]];
+        List<Tipo_de_Tanque__c> lstT = [Select Id FROM Tipo_de_Tanque__c WHERE Id =: lstTId[0]];
         Map<String, Object> response = new Map<String,Object>();
         List<Tipo_de_Tanque__c> tanquesToUpdate = new List<Tipo_de_Tanque__c>();
         String endpoint = Label.Bitly_EndPoint + '/v4/shorten'; 
