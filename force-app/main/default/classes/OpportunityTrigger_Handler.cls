@@ -2,7 +2,7 @@ public class OpportunityTrigger_Handler{
 
     public static void seleccionarTanque(List<Opportunity> Oportunidades){
 
-     /*    // Crear una lista para almacenar las oportunidades nuevas
+        // Crear una lista para almacenar las oportunidades nuevas
         List<Opportunity> newOpportunities = new List<Opportunity>();
 
          // Recorrer las oportunidades nuevas para agregarlas a la lista
@@ -10,8 +10,6 @@ public class OpportunityTrigger_Handler{
             newOpportunities.add(opp);
         }
 
-
-         */
 
         // Crear una lista para almacenar los tanques disponibles que cumplan las condiciones
        
@@ -27,14 +25,14 @@ public class OpportunityTrigger_Handler{
 
 
             
-            for (Tanque_Industrial__c tank : [SELECT Id, Capacidad__c, Tipo_de_Tanque__c, Tipo_de_Tanque__r.Precio_de_lista__c FROM Tanque_Industrial__c WHERE Capacidad__c IN :newOpportunities AND Estado__c = 'Disponible' AND Tipo_de_Tanque__r.Precio_de_lista__c >= :newOpportunities.Precio_Minimo__c AND Tipo_de_Tanque__r.Precio_de_lista__c <= :newOpportunities.Precio_maximo__c AND Tipo_de_Tanque__c = :newOpportunities.Tipo_de_Tanque__c]){
+            // for (Tanque_Industrial__c tank : [SELECT Id, Capacidad__c, Tipo_de_Tanque__c, Tipo_de_Tanque__r.Precio_de_lista__c FROM Tanque_Industrial__c WHERE Capacidad__c IN :newOpportunities AND Estado__c = 'Disponible' AND Tipo_de_Tanque__r.Precio_de_lista__c >= :newOpportunities.Precio_Minimo__c AND Tipo_de_Tanque__r.Precio_de_lista__c <= :newOpportunities.Precio_maximo__c AND Tipo_de_Tanque__c = :newOpportunities.Tipo_de_Tanque__c]){
                 
-                if (listaDeProductos.contains(opp.Producto__c)) {
-                    oportunidades.add(opp);
-                }
-            }
+            //     if (listaDeProductos.contains(opp.Producto__c)) {
+            //         oportunidades.add(opp);
+            //     }
+            // }
             
-            System.debug(oportunidades);
+            // System.debug(oportunidades);
             
 
 
