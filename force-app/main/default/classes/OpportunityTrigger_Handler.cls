@@ -2,7 +2,7 @@ public class OpportunityTrigger_Handler{
 
     public static void seleccionarTanque(List<Opportunity> Oportunidades){
 
-        // Crear una lista para almacenar las oportunidades nuevas
+     /*    // Crear una lista para almacenar las oportunidades nuevas
         List<Opportunity> newOpportunities = new List<Opportunity>();
 
          // Recorrer las oportunidades nuevas para agregarlas a la lista
@@ -10,9 +10,12 @@ public class OpportunityTrigger_Handler{
             newOpportunities.add(opp);
         }
 
+
+         */
+
         // Crear una lista para almacenar los tanques disponibles que cumplan las condiciones
        
-        List<Tanque_Industrial__c> tanks = [
+        List<Tanque_Industrial__c> tanks = [ 
             SELECT Id, Capacidad__c, Tipo_de_Tanque__c, Tipo_de_Tanque__r.Precio_de_lista__c
             FROM Tanque_Industrial__c 
             WHERE Capacidad__c IN :newOpportunities 
