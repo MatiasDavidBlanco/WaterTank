@@ -56,5 +56,8 @@ public class BitlyIntegration{
         }catch (Exception e) {         
             System.debug('Error:' + e.getMessage() + 'Linea:' + e.getLineNumber() );           
         }
+        
+        
+      
     }
  }
