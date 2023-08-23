@@ -40,7 +40,7 @@ public class BitlyIntegration{
             req.setBody(JSON.serialize(new Map<String, Object>{               
                 'group_guid' => System.Label.Bitly_GroupId,  
                 'domain'=> 'bit.ly',
-                'long_url' => System.Label.Base_URL + tipoDeTanque.Id
+                'long_url' => System.Label.Base_URL + tipoDeTanque.Id +'/view'
             })); 
             
             //Se envía petición y se almacena en variable res
