@@ -17,17 +17,13 @@
                                             <p><b>Marca:</b> {record.Marca__c} </p>
                                             <p><b>Capacidad:</b> {record.Capacidad__c} Litros </p>
                                             <p><b>Precio de Lista:</b> {record.Precio_de_lista__c} USD </p>
-                                            <p><b>URL Corto:</b>{record.URL_Corto__c}</p>
+                                            <p><b>URL Corto:</b><a href={record.URL_Corto__c}> {record.URL_Corto__c}</a></p>
                                         </div>
                                         <div class="img_container">
                                             <img class="tanque_img" src={record.URL_Imagen__c} />
                                         </div>
                                         
-
-                                        
-                                        <!-- <img class="producto_img" src={TipoDeTanque.URL_Imagen__c} /> -->
-                                        <lightning-button label="Ver Detalles" title="Detalles" onclick={navigateToRecordViewPage} data-id={record.Id}></lightning-button>
-                                        <!-- <lightning-button label="Ver Detalles" title="Detalles" onload={handleButtonClick} data-id={record.Id}></lightning-button> -->
+                                        <lightning-button label="Ver Detalles" slot="actions" onclick={navigateToRecordViewPage} data-id={record.Id}></lightning-button>
                             </lightning-card>
                         </div>
                     </div>
