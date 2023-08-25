@@ -1,8 +1,8 @@
 @isTest
 global class BitlyIntegrationCalloutMock implements HttpCalloutMock {
-    // Implement this interface method
+    // Implementación de un método de esta interfaz
     global HTTPResponse respond(HTTPRequest request){
-        // Create a fake response
+        // Crear respuesta simulada
         HttpResponse response = new HttpResponse();
         response.setHeader('Content-Type', 'application/json');
         response.setHeader('Accept', 'application/json');

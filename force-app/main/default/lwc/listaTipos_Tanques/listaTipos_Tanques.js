@@ -33,11 +33,9 @@ export default class ListaTipos_Tanques extends NavigationMixin (LightningElemen
     }
 
     handleInputChange(event){
-        //event.target.value;
         const searchTextAux = event.detail.value;
         if(searchTextAux.length >= 2 || searchTextAux === '' ){
             this.searchText = searchTextAux;
         }
     }
 }
-
