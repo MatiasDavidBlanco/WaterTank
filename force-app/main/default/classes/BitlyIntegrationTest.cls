@@ -18,6 +18,7 @@ public class BitlyIntegrationTest {
 
         Test.stopTest();
 
+        
         // Realizar comparaciones para verificar que el comportamiento esperado ocurrió
         Tipo_de_Tanque__c updatedTanque = [SELECT Id, URL_Corto__c FROM Tipo_de_Tanque__c WHERE Id = :tanque.Id];
         //System.assertEquals(200, response.getStatusCode());

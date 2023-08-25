@@ -1,11 +1,23 @@
 import { LightningElement, wire, api } from 'lwc';
 import { NavigationMixin } from 'lightning/navigation'; 
-import getAllTiposDeTanque from "@salesforce/apex/tiposDeTanquesService.getAllTiposDeTanque";
+import getFilteredTiposDeTanque from "@salesforce/apex/tiposDeTanquesService.getFilteredTiposDeTanque";
 
 export default class ListaTipos_Tanques extends NavigationMixin (LightningElement) {
     //@api TipoDeTanque;
-    @wire(getAllTiposDeTanque) ListaTiposTanques;
-    
+
+    //PROPERTIES. GETTERS & SETTERS
+    searchText= '';
+
+
+    // LIFECICLE HOOKS
+
+
+    //WIRE
+    @wire(getFilteredTiposDeTanque,{ searchText : '$searchText' }) ListaTiposTanques;
+    //searchText : '$searchText' Con este parámetro dinámico le digo al @wire que cuando hayan cambios traiga nuevos valores
+
+
+    // METHODS
 
     navigateToRecordViewPage(event) {
         const recordId = event.currentTarget.dataset.id;
@@ -18,6 +30,14 @@ export default class ListaTipos_Tanques extends NavigationMixin (LightningElemen
                 actionName: 'view'
             }
         });
+    }
+
+    handleInputChange(event){
+        //event.target.value;
+        const searchTextAux = event.detail.value;
+        if(searchTextAux.length >= 2 || searchTextAux === '' ){
+            this.searchText = searchTextAux;
+        }
     }
 }
 

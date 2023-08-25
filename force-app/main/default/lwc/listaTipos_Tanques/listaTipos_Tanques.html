@@ -1,7 +1,7 @@
 <template >
     <div class="container">
         <div class="slds-align_absolute-center">
-            <lightning-input type="text" placeholder="Buscar Tipos de Tanque"></lightning-input>
+            <lightning-input type="text" placeholder="Buscar Tipos de Tanque" label="" onchange={handleInputChange} ></lightning-input>
         </div>
         <div class="slds-grid slds-wrap slds-grid_align-space" >
             <template if:true={ListaTiposTanques.data}>
