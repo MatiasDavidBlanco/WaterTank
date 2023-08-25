@@ -4,21 +4,12 @@ import getFilteredTiposDeTanque from "@salesforce/apex/tiposDeTanquesService.get
 
 export default class ListaTipos_Tanques extends NavigationMixin (LightningElement) {
     //@api TipoDeTanque;
-
-    //PROPERTIES. GETTERS & SETTERS
     searchText= '';
 
-
-    // LIFECICLE HOOKS
-
-
-    //WIRE
-    @wire(getFilteredTiposDeTanque,{ searchText : '$searchText' }) ListaTiposTanques;
     //searchText : '$searchText' Con este parámetro dinámico le digo al @wire que cuando hayan cambios traiga nuevos valores
-
+    @wire(getFilteredTiposDeTanque,{ searchText : '$searchText' }) ListaTiposTanques;
 
     // METHODS
-
     navigateToRecordViewPage(event) {
         const recordId = event.currentTarget.dataset.id;
         console.log(recordId);
