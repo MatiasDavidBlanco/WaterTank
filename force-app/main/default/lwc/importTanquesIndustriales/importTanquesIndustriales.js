@@ -12,6 +12,7 @@ export default class importTanquesIndustriales extends LightningElement {
     loading = false;
     @track _results;
     @track _rows;
+    
     get columns(){
         const columns = [
             { label: 'Tipo de Tanque', fieldName: 'TipodeTanque' },

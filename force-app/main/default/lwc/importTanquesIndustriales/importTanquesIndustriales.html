@@ -6,23 +6,27 @@
                              label="CSV file"
                              multiple="false"
                              accept=".csv"
-                             onchange={handleInputChange}></lightning-input>
+                             onchange={handleInputChange}>
+            </lightning-input>
         </div>
         <template if:true={rows.length}>
             <div class="slds-p-around_medium">
                 <lightning-datatable key-field="key"
                                      hide-checkbox-column
                                      data={rows}
-                                     columns={columns}></lightning-datatable>
+                                     columns={columns}>
+                </lightning-datatable>
                 <div class="slds-p-around_small slds-align_absolute-center">
                     <lightning-button variant="neutral"
                                       label="Cancel"
                                       title="Cancel" onclick={cancel}
-                                      class="slds-m-left_x-small"></lightning-button>
+                                      class="slds-m-left_x-small">
+                    </lightning-button>
                     <lightning-button variant="brand"
                                       label="Create"
                                       title="Create" onclick={createTanquesIndustriales}
-                                      class="slds-m-left_x-small"></lightning-button>
+                                      class="slds-m-left_x-small">
+                    </lightning-button>
                 </div>
             </div>
         </template>
