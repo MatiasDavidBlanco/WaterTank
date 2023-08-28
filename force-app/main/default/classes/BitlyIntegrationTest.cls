@@ -4,44 +4,44 @@ public class BitlyIntegrationTest {
     @isTest
     static void testGenerateBitly() {
         
-        //Preparación
+        // Test data setup
         Tipo_de_Tanque__c tanque = new Tipo_de_Tanque__c(Name = 'Tanque de Prueba');
-        insert tanque;
+        INSERT tanque;
 
-        //Ejecución
+        // Call the method to be tested
         Test.startTest();
-       	// Configuración del mock HTTP que simula llamadas HTTP a Bitly
+       // Configuration of the mock HTTP that simulates HTTP calls to Bitly
         Test.setMock(HttpCalloutMock.class, new BitlyIntegrationCalloutMock());
         
         List<Tipo_de_Tanque__c> tiposDeTanques = new List<Tipo_de_Tanque__c>{ tanque };
         BitlyIntegration.generateBitly(tiposDeTanques);
 		Test.stopTest();
 
-        //Verificación
-        Tipo_de_Tanque__c updatedTanque = [SELECT Id, URL_Corto__c FROM Tipo_de_Tanque__c WHERE Id = :tanque.Id];
+         // Verify the result using assertions
+        Tipo_de_Tanque__c updatedTanque = [SELECT Id, URL_Corto__c 
+                                           FROM Tipo_de_Tanque__c 
+                                           WHERE Id = :tanque.Id];
         System.assertEquals('https://bit.ly/shortlink', updatedTanque.URL_Corto__c);
     }
     
     @isTest
     static void testGenerateBitlyWithException() {
         
-        //Preparación
+         // Test data setup
         Tipo_de_Tanque__c tanque = new Tipo_de_Tanque__c(Name = 'Tanque de Prueba');
-        insert tanque;
+        INSERT tanque;
         
-		//Ejecución
+		// Call the method to be tested
         Test.startTest();
-        
-        // Configuración del mock HTTP que simula llamadas HTTP a Bitly pero provoca excepciones controladas
         Test.setMock(HttpCalloutMock.class, new BitlyIntegrationCalloutExceptionMock());
-
         List<Tipo_de_Tanque__c> tiposDeTanques = new List<Tipo_de_Tanque__c>{ tanque };
         BitlyIntegration.generateBitly(tiposDeTanques);
-
         Test.stopTest();
 
-        //Verificación
-        Tipo_de_Tanque__c updatedTanque = [SELECT Id, URL_Corto__c FROM Tipo_de_Tanque__c WHERE Id = :tanque.Id];
+        // Verify the result using assertions
+        Tipo_de_Tanque__c updatedTanque = [SELECT Id, URL_Corto__c 
+                                           FROM Tipo_de_Tanque__c 
+                                           WHERE Id = :tanque.Id];
         System.assert(updatedTanque.URL_Corto__c == null);
     }
 }

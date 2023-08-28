@@ -1,26 +1,25 @@
-// Clase que maneja la integración con Bitly
 public class BitlyIntegration{
     
-    // Método que recibe como parámetro una lista de Tipos de Tanques
+    // Method that receives a list of Tank Types as a parameter
     public static void generateBitly(List<Tipo_de_Tanque__c > tiposDeTanques){
          
-        //Iterar sobre la lista recibida y por cada item llamar a la clase createBitly enviando sólo Id. 
+        // Iterate over the received list and for each item, call the createBitly class by sending only the Id.
         for (Tipo_de_Tanque__c tanque : tiposDeTanques) { 
             createBitly(tanque.Id);
         }	
     }
-    //Método asíncrono que recibe como parámetro el Id de cada tipo de tanque
+    // Asynchronous method that receives the Id of each tank type as a parameter
     @future(callout=true)
     public static void createBitly(Id tipoDeTanqueId){
         
-        //Recuperar el registro en la base de datos con el Id recibido
-        Tipo_de_Tanque__c tipoDeTanque = [SELECT Id, Name, Capacidad__c FROM Tipo_de_Tanque__c WHERE Id = :tipoDeTanqueId];
+        // Retrieve the record from the database with the received Id
+        Tipo_de_Tanque__c tipoDeTanque = [SELECT Id, Name, Capacidad__c 
+                                         FROM Tipo_de_Tanque__c 
+                                         WHERE Id = :tipoDeTanqueId];
         
-       // Crear una variable 'response' de tipo map para almacenar la respuesta que se recibirá
         Map<String, Object> response = new Map<String,Object>();
-      
-        //Variable para almacenar endpoint
-        String endpoint = System.Label.Bitly_EndPoint + '/v4/shorten'; 
+        String endpoint = System.Label.Bitly_EndPoint; 
+        //String endpoint = System.Label.Bitly_EndPoint + '/v4/shorten'; 
           
         try {                  
             HttpRequest req = new HttpRequest();
@@ -37,15 +36,14 @@ public class BitlyIntegration{
                 'long_url' => System.Label.Base_URL + tipoDeTanque.Id +'/view'
             })); 
             
-             // Enviar la petición y almacenarla en la variable 'res'
-            
+            // Send the request and store it in the 'res' variable
             res = http.send(req);            
             response = (Map<String, Object>) JSON.deserializeUntyped(res.getBody());
             System.debug('RESPUESTA STRING:' + res.getBody());
             tipoDeTanque.URL_Corto__c  = (String) response.get('link');
             System.debug('RESULTADO : '+ tipoDeTanque);
             
-            update tipoDeTanque;
+            UPDATE tipoDeTanque;
    
         }catch (Exception e) {         
             System.debug('Error:' + e.getMessage() + 'Linea:' + e.getLineNumber() );           

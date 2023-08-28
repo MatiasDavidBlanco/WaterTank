@@ -1,6 +1,6 @@
 import { LightningElement, wire, api } from 'lwc';
 import { NavigationMixin } from 'lightning/navigation'; 
-import getFilteredTiposDeTanque from "@salesforce/apex/tiposDeTanquesService.getFilteredTiposDeTanque";
+import getFilteredTiposDeTanque from "@salesforce/apex/TiposDeTanquesService.getFilteredTiposDeTanque";
 
 export default class ListaTipos_Tanques extends NavigationMixin (LightningElement) {
     //@api TipoDeTanque;

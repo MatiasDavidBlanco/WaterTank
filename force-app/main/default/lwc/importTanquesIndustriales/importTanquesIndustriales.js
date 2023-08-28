@@ -98,22 +98,6 @@ export default class importTanquesIndustriales extends LightningElement {
                 .finally(() => this.loading = false);
         }
     }
-    // createTanquesIndustriales(){
-    //     const tanquesToCreate = this.rows.map(row => {
-    //         const fields = {};
-    //         fields[TIPO_DE_TANQUE__C_FIELD.fieldApiName] = row.TipodeTanque;
-    //         fields[NUMERO_DE_SERIE__C_FIELD .fieldApiName] = row.NumerodeSerie;
-    //         const recordInput = { apiName: TANQUE_INDUSTRIAL__C_OBJECT.objectApiName, fields };
-    //         return createRecord(recordInput);
-    //     });
-    //     if(tanquesToCreate.length){
-    //         this.loading = true;
-    //         Promise.allSettled(tanquesToCreate)
-    //             .then(results => this._results = results)
-    //             .catch(error => console.error(error))
-    //             .finally(() => this.loading = false);
-    //     }
-    // }
     cancel(){
         this._rows = undefined;
         this._results = undefined;
