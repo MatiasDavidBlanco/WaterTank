@@ -1,12 +1,10 @@
 <template>
-    <lightning-card title="🚩 Importar Tanques Industriales ">
-       
-    <div class="slds-box slds-m-around_medium">
-       <lightning-file-upload  accept={acceptedFormats}  
-         label="Attach CSV File" 
-         onuploadfinished={uploadFileHandler}>
-       </lightning-file-upload>
-    </div>
- 
+    <lightning-card title="🚩 Importar Tanques Industriales "> 
+      <div class="slds-box slds-m-around_medium">
+        <lightning-file-upload  accept={acceptedFormats}  
+          label="Adjuntar archivo CSV" 
+          onuploadfinished={uploadFileHandler}>
+        </lightning-file-upload>
+      </div>
     </lightning-card>
 </template>
