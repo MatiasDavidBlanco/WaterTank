@@ -3,14 +3,16 @@ public with sharing class FileUploadControllerTest {
 
     @isTest
     static void FileUploadControllerTest() {
-    
+
+        // Test data setup
         ContentVersion testContentVersionObj = new ContentVersion(
             Title = 'Test CSV File',
-            PathOnClient = 'test.csv', // Ruta del archivo en el cliente
+            PathOnClient = 'test.csv',
             VersionData = Blob.valueOf('TipodeTanque,NumerodeSerie,Estado\nTipo1,Serial123,Disponible\nTipo2,Serial456,Disponible'),
             ContentLocation  = 'S'
         );
         INSERT testContentVersionObj;
+        
         Id retrieveContentDocumentId = [SELECT ContentDocumentId 
                                         FROM ContentVersion 
                                         WHERE Id = :testContentVersionObj.Id].ContentDocumentId;
