@@ -16,8 +16,8 @@ export default class FileUpload extends LightningElement {
     // Handling the file upload event
     uploadFileHandler( event ) {
         const uploadedFiles = event.detail.files;
-        console.log('file name:-'+uploadedFiles[0].name);
-        console.log('document id:-'+uploadedFiles[0].documentId);
+        //console.log('file name:-'+uploadedFiles[0].name);
+        //console.log('document id:-'+uploadedFiles[0].documentId);
 
         this.contentDocumentId=uploadedFiles[0].documentId;
 
@@ -30,7 +30,7 @@ export default class FileUpload extends LightningElement {
           const event = new ShowToastEvent({
           title: 'Success',
           message:
-            this.recordCount+' Tanques industriales insertados con éxito.',
+            this.recordCount+' Tanques industriales insertados con éxito.', // CUSTOM LABEL
            variant:'success',
            mode:'dismissible'
            });
